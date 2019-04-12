@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -71,15 +72,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'fyle_task.wsgi.application'
 DATABASE_URL = 'postgres://nzpmgnpmjipcwd:68b888a9285a6e6d7b928724148a484de12141b5d65d35a03f73adf24ea148f4@ec2-23-23-92-204.compute-1.amazonaws.com:5432/d3jko6bc179u44'
 
+
+# Parse database configuration from $DATABASE_URL
+DATABASES = {
+    'default': dj_database_url.config(default=DATABASE_URL)
+}
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fyle',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'fyle',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
